@@ -1,0 +1,81 @@
+/* --- 1. Reset Básico y Modelo de Caja --- */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Colores */
+    --color-fondo-azul: #1a2a6c;
+    --color-celeste: #87ceeb;
+    --color-rosado: #ff69b4;
+    --color-borde: #ffffff;
+    
+    /* Dimensiones en rem (Basado en 16px) */
+    --ancho-cont: 25rem;      /* 400px */
+    --alto-cont: 18.75rem;    /* 300px */
+    --tamano-fig: 2.5rem;     /* 40px */
+    --margen-interno: 0.5rem; /* Separación del borde */
+    --offset-segunda: 3.5rem; /* Espacio para la segunda figura de cada esquina */
+}
+
+/* --- 2. Centrado con Flexbox --- */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--color-fondo-azul);
+    font-family: sans-serif;
+}
+
+/* --- 3. Contenedor Principal --- */
+.contenedor-principal {
+    width: var(--ancho-cont);
+    height: var(--alto-cont);
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 0.125rem solid var(--color-borde);
+    position: relative; /* Indispensable para absolute en hijos */
+}
+
+/* --- 4. Estilos de las Figuras --- */
+.figura {
+    width: var(--tamano-fig);
+    height: var(--tamano-fig);
+    position: absolute;
+    transition: transform 0.2s ease;
+}
+
+.cuadrado {
+    background-color: var(--color-celeste);
+}
+
+.circulo {
+    background-color: var(--color-rosado);
+    border-radius: 50%;
+}
+
+.figura:hover {
+    transform: scale(1.1);
+}
+
+/* --- 5. Ubicación Exacta (Coordenadas) --- */
+
+/* Arriba Izquierda */
+.pos-ai-1 { top: var(--margen-interno); left: var(--margen-interno); }
+.pos-ai-2 { top: var(--margen-interno); left: var(--offset-segunda); }
+
+/* Arriba Derecha */
+.pos-ad-1 { top: var(--margen-interno); right: var(--offset-segunda); }
+.pos-ad-2 { top: var(--margen-interno); right: var(--margen-interno); }
+
+/* Abajo Izquierda */
+.pos-bi-1 { bottom: var(--margen-interno); left: var(--margen-interno); }
+.pos-bi-2 { bottom: var(--margen-interno); left: var(--offset-segunda); }
+
+/* Abajo Derecha */
+.pos-bd-1 { bottom: var(--margen-interno); right: var(--offset-segunda); }
+.pos-bd-2 { bottom: var(--margen-interno); right: var(--margen-interno); }
